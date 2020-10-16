@@ -1,0 +1,7 @@
+name: dart_backend_template
+dependencies:
+  angel_framework: ^2.0.0
+  angel_hot: ^2.0.0
+  uuid: ^2.2.2
+  firedart: ^0.8.2
+  dotenv: ^2.0.0
