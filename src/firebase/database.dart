@@ -4,18 +4,17 @@ import 'package:dotenv/dotenv.dart';
 
 class Database {
   FirebaseAuth auth;
-  Firestore context;
+  Firestore firestore;
 
   Database() {
     FirebaseAuth.initialize(env['API_KEY'], VolatileStore());
     Firestore.initialize(env['PROJECT_ID']);
     this.auth = FirebaseAuth.instance;
-    this.context = Firestore.instance;
+    this.firestore = Firestore.instance;
+    this._signIn();
   }
 
-  signIn() async {
+  _signIn() async {
     await this.auth.signIn(env['EMAIL'], env['PASSWORD']);
   }
 }
-
-final db = Database();

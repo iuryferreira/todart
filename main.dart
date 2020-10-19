@@ -1,9 +1,10 @@
 import 'package:dotenv/dotenv.dart';
+import 'src/app.dart';
 
-import 'server/app.dart';
+Application app;
 
 main() async {
   load();
-  var app = Application();
+  app = Application();
   await app.startServer();
 }
