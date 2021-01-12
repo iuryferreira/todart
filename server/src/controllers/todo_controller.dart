@@ -1,7 +1,7 @@
 import 'package:angel_framework/angel_framework.dart';
 import 'package:angel_framework/http.dart';
 import '../middlewares/deserialize.dart';
-import '../repositories/todo_repository.dart';
+import '../../../core/persistence/repositories/todo_repository.dart';
 
 @Expose("/todos")
 class TodoController extends Controller {
