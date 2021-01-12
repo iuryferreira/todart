@@ -1,4 +1,5 @@
-name: dart_backend_template
+name: todart_server
+version: 1.0.0
 dependencies:
   angel_framework: ^2.0.0
   angel_hot: ^2.0.0
