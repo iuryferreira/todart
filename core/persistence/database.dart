@@ -2,7 +2,9 @@ import 'package:firedart/auth/firebase_auth.dart';
 import 'package:firedart/firedart.dart';
 import 'package:dotenv/dotenv.dart';
 
-class Database {
+import '../shared/database.dart';
+
+class Database implements IDatabase {
   FirebaseAuth auth;
   Firestore firestore;
 

@@ -1,32 +1,22 @@
-import 'package:uuid/uuid.dart';
-import '../firebase/todo_context.dart';
+import '../../shared/database.dart';
+import '../../shared/repository.dart';
+import '../../domain/entities/todo.dart';
 
-class TodoRepository {
-  final context = new TodoContext();
+class TodoRepository implements IRepository<Todo> {
+  @override
+  IDatabase connection;
 
-  Future<dynamic> getAll() async {
-    return await context.getAll();
-  }
+  TodoRepository(IDatabase connection);
 
-  Future<dynamic> getTodoList(String idTodoList) async {
-    return await context.getTodoListById(idTodoList);
-  }
-
-  Future<dynamic> getItem(String idTodoList, String idItem) async {
-    return await context.getItemById(idTodoList, idItem);
-  }
-
-  Future<dynamic> addTodoList(String title) async {
-    var todoList = {'title': title, 'items': []};
-    return await context.addTodoList(id: Uuid().v4(), todoList: todoList);
-  }
-
-  Future<dynamic> addTask(String idTodoList, dynamic task) async {
-    task.id = Uuid().v4();
-    return await context.addTask(idTodoList, task);
-  }
-
-  Future<bool> deleteItem(String idTodoList, String idItem) async {
-    return await context.deleteItem(idTodoList, idItem);
+  add(entity) async {
+    try {
+      await connection.firestore
+          .collection('todos')
+          .document(entity.id)
+          .create(entity.toMap());
+      return true;
+    } catch (err) {
+      throw err;
+    }
   }
 }
