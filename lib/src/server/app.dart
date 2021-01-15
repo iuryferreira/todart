@@ -21,7 +21,7 @@ class Application {
   }
 
   addRoutes() {
-    this.app.configure(TodoController().configureServer);
+    this.app.configure(new TodoController().configureServer);
     this.app.fallback((req, res) => throw new AngelHttpException.notFound());
   }
 }

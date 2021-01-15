@@ -1,12 +1,12 @@
 import '../../shared/database.dart';
 import '../../shared/repository.dart';
-import '../../domain/entities/todo.dart';
+import '../../shared/dtos/todo.dart';
 
-class TodoRepository implements IRepository<Todo> {
+class TodoRepository implements IRepository<TodoDto> {
   @override
   IDatabase connection;
 
-  TodoRepository(IDatabase connection);
+  TodoRepository(IDatabase this.connection);
 
   add(entity) async {
     try {

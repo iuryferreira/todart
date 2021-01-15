@@ -10,19 +10,21 @@ class CreateTodoUseCase implements UseCase<TodoDto> {
   IRepository<TodoDto> repository;
 
   CreateTodoUseCase(
-      IRepository<TodoDto> repository, IPresenter<TodoDto> presenter);
+      IRepository<TodoDto> this.repository, IPresenter<TodoDto> this.presenter);
 
   @override
   execute(TodoDto data) async {
     if (!data.isValid()) {
       return false;
     }
-    var todo = (Todo.create(data.name)) as TodoDto;
+    var todo = Todo.create(data.name);
 
-    if (!(await this.repository.add(todo))) {
+    var todoData = new TodoDto(todo.id, todo.name, todo.items);
+
+    if (!(await this.repository.add(todoData))) {
       return false;
     }
-    this.presenter.add(todo);
+    this.presenter.add(todoData);
     return true;
   }
 }

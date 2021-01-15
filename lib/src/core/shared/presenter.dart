@@ -6,7 +6,7 @@ abstract class IPresenter<T> {
 class Presenter<T> implements IPresenter<T> {
   List<T> result;
 
-  IPresenter() {
+  Presenter() {
     this.result = new List<T>();
   }
 
