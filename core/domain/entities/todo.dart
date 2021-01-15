@@ -13,6 +13,10 @@ class Todo {
     this.items = items;
   }
 
+  Map<String, dynamic> toMap() {
+    return {'id': id, 'name': name, 'items': items};
+  }
+
   static Todo create(String name) {
     return new Todo(name, Uuid().v4());
   }
