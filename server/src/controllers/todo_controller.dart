@@ -1,43 +1,22 @@
 import 'package:angel_framework/angel_framework.dart';
-import 'package:angel_framework/http.dart';
+
+import '../../../core/shared/services/todo_service.dart';
+import '../../../core/shared/dtos/todo.dart';
+
 import '../middlewares/deserialize.dart';
-import '../../../core/persistence/repositories/todo_repository.dart';
 
 @Expose("/todos")
 class TodoController extends Controller {
-  final TodoRepository repository = new TodoRepository();
+  ITodoService service;
 
-  @Expose("/:id")
-  getTodoList(id) async {
-    return await repository.getTodoList(id);
-  }
-
-  @Expose("/")
-  all(HttpRequestContext req, HttpResponseContext res) async {
-    var todolists = await repository.getAll();
-    if (todolists == null) {
-      res.statusCode = 500;
-    }
-    return todolists;
-  }
+  TodoController(ITodoService service);
 
   @Expose("/", method: "POST", middleware: const [deserialize])
-  storeList(RequestContext req, res) async {
-    var response = req.bodyAsMap;
-    return repository.addTodoList(response['title']);
-  }
-
-  @Expose("/:id", method: "POST", middleware: const [deserialize])
-  storeItem(RequestContext req, res) async {
-    var response = req.bodyAsMap;
-    var task = repository.addTask(req.params['id'], {response['task']});
-    res.statusCode = 201;
-    return task;
-  }
-
-  @Expose("/:id", method: "DELETE", middleware: const [deserialize])
-  deleteItem(HttpRequestContext req, HttpResponseContext res) async {
-    var body = req.bodyAsMap;
-    await repository.deleteItem(req.params['id'], body['id']);
+  store(RequestContext request, ResponseContext response) async {
+    var data = new TodoDto();
+    data.name = request.bodyAsMap['name'];
+    var result = await service.add(data);
+    response.statusCode = 201;
+    return response.json(result);
   }
 }
