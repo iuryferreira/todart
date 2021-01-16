@@ -5,7 +5,7 @@ class TodoPresenter implements ITodoPresenter {
   List<TodoDto> result;
 
   TodoPresenter() {
-    result = List<TodoDto>();
+    result = <TodoDto>[];
   }
   add(TodoDto data) {
     this.result.add(data);
