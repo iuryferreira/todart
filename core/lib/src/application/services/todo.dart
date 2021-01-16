@@ -3,11 +3,11 @@ import '../../shared/usecases/todo.dart';
 import '../../shared/dtos/todo.dart';
 
 class TodoService implements ITodoService {
-  ICreateTodoUseCase createTodoUseCase;
+  ITodoUseCase usecase;
 
-  TodoService(this.createTodoUseCase);
+  TodoService(this.usecase);
 
   add(TodoDto data) async {
-    return await createTodoUseCase.execute(data);
+    return await usecase.add(data);
   }
 }

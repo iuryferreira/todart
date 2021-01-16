@@ -1,7 +1,7 @@
 import '../repositories/todo.dart';
-import '../dtos/todo.dart';
-import '../usecase.dart';
+import '../../../core.dart';
 
-abstract class ICreateTodoUseCase extends UseCase<TodoDto> {
+abstract class ITodoUseCase {
   ITodoRepository repository;
+  Future<TodoDto> add(TodoDto data);
 }

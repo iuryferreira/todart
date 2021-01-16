@@ -2,6 +2,6 @@ import '../usecases/todo.dart';
 import '../dtos/todo.dart';
 
 abstract class ITodoService {
-  ICreateTodoUseCase createTodoUseCase;
+  ITodoUseCase usecase;
   Future<TodoDto> add(TodoDto data);
 }
