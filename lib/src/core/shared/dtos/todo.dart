@@ -1,6 +1,6 @@
 import '../errors/error.dart';
 import '../validator.dart';
-import 'dto.dart';
+import '../dto.dart';
 
 class TodoDto implements Dto {
   String id;

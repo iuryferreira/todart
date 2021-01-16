@@ -1,5 +1,5 @@
 import 'package:dotenv/dotenv.dart';
-import 'src/server/app.dart';
+import 'package:todart/todart.dart';
 
 Application app;
 

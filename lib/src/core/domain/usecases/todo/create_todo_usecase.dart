@@ -1,16 +1,15 @@
-import '../../../shared/usecase.dart';
+import '../../../shared/repositories/todo.dart';
+import '../../../shared/presenters/todo.dart';
+import '../../../shared/usecases/todo.dart';
 import '../../../shared/dtos/todo.dart';
-import '../../../shared/presenter.dart';
-import '../../../shared/repository.dart';
-
 import '../../entities/todo.dart';
 
-class CreateTodoUseCase implements UseCase<TodoDto> {
-  IPresenter<TodoDto> presenter;
-  IRepository<TodoDto> repository;
+class CreateTodoUseCase implements ICreateTodoUseCase {
+  ITodoPresenter presenter;
+  ITodoRepository repository;
 
   CreateTodoUseCase(
-      IRepository<TodoDto> this.repository, IPresenter<TodoDto> this.presenter);
+      ITodoRepository this.repository, ITodoPresenter this.presenter);
 
   @override
   execute(TodoDto data) async {

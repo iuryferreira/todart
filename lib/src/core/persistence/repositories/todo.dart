@@ -1,8 +1,7 @@
 import '../../shared/database.dart';
-import '../../shared/repository.dart';
-import '../../shared/dtos/todo.dart';
+import '../../shared/repositories/todo.dart';
 
-class TodoRepository implements IRepository<TodoDto> {
+class TodoRepository implements ITodoRepository {
   @override
   IDatabase connection;
 

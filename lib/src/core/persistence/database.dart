@@ -8,18 +8,14 @@ class Database implements IDatabase {
   FirebaseAuth auth;
   Firestore firestore;
 
-  Database._Database() {
+  Database() {
     FirebaseAuth.initialize(env['API_KEY'], VolatileStore());
     Firestore.initialize(env['PROJECT_ID']);
     this.auth = FirebaseAuth.instance;
     this.firestore = Firestore.instance;
     this._signIn();
   }
-
   _signIn() async {
     await this.auth.signIn(env['EMAIL'], env['PASSWORD']);
   }
-
-  static final _instance = Database._Database();
-  static Database get instance => _instance;
 }
