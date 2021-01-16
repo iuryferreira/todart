@@ -8,7 +8,6 @@ class TodoService implements ITodoService {
   TodoService(this.createTodoUseCase);
 
   add(TodoDto data) async {
-    await createTodoUseCase.execute(data);
-    return createTodoUseCase.presenter.result;
+    return await createTodoUseCase.execute(data);
   }
 }

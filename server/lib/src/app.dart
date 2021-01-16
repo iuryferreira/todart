@@ -8,18 +8,14 @@ class Application {
   Angel app;
   AngelHttp server;
   Application() {
-    this.createApp();
+    this.app = Angel(reflector: MirrorsReflector());
+    setupContainer();
+    this.routes();
   }
 
   startServer() async {
     this.server = AngelHttp(app);
     await this.server.startServer('localhost', 3000);
-  }
-
-  createApp() {
-    this.app = Angel(reflector: MirrorsReflector());
-    setupContainer();
-    this.routes();
   }
 
   routes() {
