@@ -1,4 +1,5 @@
 name: todart_core
+publish_to: none
 version: 0.0.1
 environment:
   sdk: '>= 2.8.0'
