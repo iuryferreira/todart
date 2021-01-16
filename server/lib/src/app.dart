@@ -1,8 +1,8 @@
 import 'package:angel_framework/angel_framework.dart';
 import 'package:angel_framework/http.dart';
 import 'package:angel_container/mirrors.dart';
-import 'controllers/todo_controller.dart';
-import 'container.dart';
+import 'package:todart_core/core.dart';
+import 'routes.dart';
 
 class Application {
   Angel app;
@@ -19,11 +19,11 @@ class Application {
   createApp() {
     this.app = Angel(reflector: MirrorsReflector());
     setupContainer();
-    this.addRoutes();
+    this.routes();
   }
 
-  addRoutes() {
-    this.app.configure(container.make(TodoController).configureServer);
+  routes() {
+    routesTodo(this.app);
     this.app.fallback((req, res) => throw new AngelHttpException.notFound());
   }
 }

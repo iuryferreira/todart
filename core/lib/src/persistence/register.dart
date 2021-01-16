@@ -6,6 +6,6 @@ import 'repositories/todo.dart';
 import 'database.dart';
 
 void registerPersistence(Ioco container) {
-  container.bind(IDatabase, Database);
+  container.singleton(new Database(), as: IDatabase);
   container.bind(ITodoRepository, TodoRepository);
 }

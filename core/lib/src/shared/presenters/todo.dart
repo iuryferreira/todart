@@ -1,4 +1,4 @@
-import 'package:todart/src/core/shared/dtos/todo.dart';
+import '../../shared/dtos/todo.dart';
 
 import '../presenter.dart';
 

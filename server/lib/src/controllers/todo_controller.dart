@@ -1,7 +1,5 @@
 import 'package:angel_framework/angel_framework.dart';
-import '../../core/shared/services/todo.dart';
-import '../../core/shared/dtos/todo.dart';
-
+import 'package:todart_core/core.dart';
 import '../middlewares/deserialize.dart';
 
 @Expose("/todos")
