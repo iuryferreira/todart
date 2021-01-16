@@ -5,7 +5,7 @@ import '../../shared/dtos/todo.dart';
 class TodoService implements ITodoService {
   ICreateTodoUseCase createTodoUseCase;
 
-  TodoService(ICreateTodoUseCase this.createTodoUseCase);
+  TodoService(this.createTodoUseCase);
 
   add(TodoDto data) async {
     await createTodoUseCase.execute(data);

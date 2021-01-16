@@ -8,8 +8,7 @@ class CreateTodoUseCase implements ICreateTodoUseCase {
   ITodoPresenter presenter;
   ITodoRepository repository;
 
-  CreateTodoUseCase(
-      ITodoRepository this.repository, ITodoPresenter this.presenter);
+  CreateTodoUseCase(this.repository, this.presenter);
 
   @override
   execute(TodoDto data) async {
