@@ -1,6 +1,6 @@
-import 'errors/error.dart';
+import 'errors.dart';
 
 abstract class Dto {
-  List<Error> errors;
+  Errors errors;
   bool isValid();
 }

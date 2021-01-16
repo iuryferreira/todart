@@ -1,4 +1,5 @@
-import '../errors/error.dart';
+import 'package:todart_core/src/shared/errors.dart';
+
 import '../validator.dart';
 import '../dto.dart';
 
@@ -6,13 +7,12 @@ class TodoDto implements Dto {
   String id;
   String name;
   List<dynamic> items;
+  Errors errors;
 
-  @override
-  List<Error> errors;
+  TodoDto([this.id, this.name, this.items]) {
+    this.errors = Errors();
+  }
 
-  TodoDto([this.id, this.name, this.items]);
-
-  @override
   bool isValid() {
     return Validator.isRequired(name, 'name', errors);
   }

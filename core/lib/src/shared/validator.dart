@@ -1,9 +1,11 @@
-import 'errors/error.dart';
+import 'package:todart_core/src/shared/errors.dart';
 
 class Validator {
-  static bool isRequired(field, String fieldName, List<Error> errors) {
+  static bool isRequired(field, String fieldName, Errors errorGroup) {
     if (field == null) {
-      errors.add(new Error(fieldName, "Este campo é obrigatório."));
+      errorGroup.errors
+          .add(ValidationError(fieldName, "Este campo é obrigatório."));
+      errorGroup.type = ValidationError;
       return false;
     }
     return true;
