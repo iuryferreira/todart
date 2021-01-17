@@ -1,8 +1,7 @@
 import 'database.dart';
 import 'errors.dart';
 
-abstract class IRepository<T> {
+abstract class IRepository {
   IDatabase connection;
   Errors errors;
-  Future<bool> add(T entity);
 }
