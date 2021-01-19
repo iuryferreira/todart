@@ -1,8 +1,8 @@
 <p align="center">
-  <img alt="Authentication" title="Authentication" src=".github/img/logo.png" width="600px" />
+  <img alt="Authentication" title="Authentication" src=".github/img/logo.svg" width="600px" />
 </p>
 <h3 align="center">
-    A powerful task control api in Dart.
+    Record your tasks more easily.
 </h3>
 
 <p align="center">
