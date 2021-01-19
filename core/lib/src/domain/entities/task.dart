@@ -1,3 +1,4 @@
+import 'package:todart_core/src/shared/dtos/task.dart';
 import 'package:uuid/uuid.dart';
 
 class Task {
@@ -6,12 +7,14 @@ class Task {
   bool status;
   String todoId;
 
-  Task(String message, [String id, bool status]) {
-    this.message = message;
-    this.id = id;
+  Task(this.id, this.message, this.status, this.todoId);
+
+  static Task create(String message, String todoId) {
+    return Task(message, Uuid().v4(), false, todoId);
   }
 
-  static Task create(String message) {
-    return Task(message, Uuid().v4(), false);
+  TaskDto toDto() {
+    var data = TaskDto(this.id, this.message, this.status, this.todoId);
+    return data;
   }
 }

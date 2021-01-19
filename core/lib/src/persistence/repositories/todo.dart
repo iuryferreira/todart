@@ -32,4 +32,12 @@ class TodoRepository implements ITodoRepository {
       return false;
     }
   }
+
+  Future<TodoDto> find(String id) {
+    throw UnimplementedError();
+  }
+
+  Future<bool> todoExists(String username) {
+    throw UnimplementedError();
+  }
 }
