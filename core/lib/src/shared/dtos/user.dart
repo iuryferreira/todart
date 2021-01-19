@@ -15,6 +15,13 @@ class UserDto implements Dto {
     this.errors = Errors();
   }
 
+  UserDto.fromMap(Map<String, dynamic> map)
+      : id = map['id'],
+        name = map['name'],
+        username = map['username'],
+        password = map['password'],
+        todos = map['todos'];
+
   bool isValid() {
     var name = Validator.isRequired(this.name, 'name', errors);
     var username = Validator.isRequired(this.username, 'username', errors);

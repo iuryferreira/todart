@@ -13,8 +13,8 @@ class UserUseCase implements IUserUseCase {
 
     if (user.isValid()) {
       var entity = User.create(user.name, user.username, user.password);
-      if (!await this.repository.exists(entity.username)) {
-        user = entity.cast();
+      if (!await this.repository.usernameExists(entity.username)) {
+        user = entity.toDto();
         if (!await this.repository.add(user)) {
           data.errors = repository.errors;
         }

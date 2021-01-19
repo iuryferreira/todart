@@ -9,6 +9,7 @@ class TodoController {
   store(RequestContext request, ResponseContext response) async {
     var data = new TodoDto();
     data.name = request.bodyAsMap['name'];
+    data.userId = request.bodyAsMap['userId'];
     var result = await service.add(data);
 
     if (!result.errors.empty) {

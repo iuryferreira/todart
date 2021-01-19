@@ -13,13 +13,22 @@ class TodoRepository implements ITodoRepository {
 
   add(entity) async {
     try {
+      var user = (await connection.firestore
+              .collection('users')
+              .document(entity.userId)
+              .get())
+          .map;
+
+      var todos = new List.from(user['todos']);
+      todos.add(entity.toMap());
+
       await connection.firestore
-          .collection('todos')
-          .document(entity.id)
-          .create(entity.toMap());
+          .collection('users')
+          .document(entity.userId)
+          .update({'todos': todos});
       return true;
     } catch (err) {
-      errors.errors.add(InternalError(err));
+      errors.errors.add(InternalError(err.message));
       return false;
     }
   }

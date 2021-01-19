@@ -4,6 +4,7 @@ class Task {
   String id;
   String message;
   bool status;
+  String todoId;
 
   Task(String message, [String id, bool status]) {
     this.message = message;

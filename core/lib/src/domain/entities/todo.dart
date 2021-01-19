@@ -1,19 +1,20 @@
 import 'package:uuid/uuid.dart';
 
-import 'todo_item.dart';
+import '../../interfaces.dart';
 
 class Todo {
   String id;
   String name;
-  List<TodoItem> items;
+  String userId;
 
-  Todo(this.name, this.id, this.items);
+  Todo(this.name, this.id, this.userId);
 
-  static Todo create(String name) {
-    return new Todo(name, Uuid().v4(), []);
+  static Todo create(String name, String userId) {
+    return new Todo(name, Uuid().v4(), userId);
   }
 
-  void addItem(TodoItem item) {
-    items.add(item);
+  TodoDto toDto() {
+    var data = new TodoDto(this.id, this.name, this.userId);
+    return data;
   }
 }

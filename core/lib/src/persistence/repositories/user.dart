@@ -8,6 +8,7 @@ class UserRepository implements IUserRepository {
 
   UserRepository(this.connection) {
     this.errors = Errors();
+    errors.type = InternalError;
   }
 
   add(entity) async {
@@ -23,7 +24,7 @@ class UserRepository implements IUserRepository {
     }
   }
 
-  exists(String username) async {
+  usernameExists(username) async {
     try {
       var users = await connection.firestore
           .collection('users')
@@ -39,6 +40,28 @@ class UserRepository implements IUserRepository {
     } catch (err) {
       errors.errors.add(InternalError(err));
       return true;
+    }
+  }
+
+  find(id) async {
+    try {
+      var result = (await connection.firestore
+              .collection('users')
+              .where('id', isEqualTo: id)
+              .get())
+          .first;
+
+      var user = UserDto.fromMap(result.map);
+      return user;
+    } catch (err) {
+      if (err is StateError) {
+        errors.type = ValidationError;
+        errors.errors
+            .add(ValidationError('userId', "Este usuário não existe."));
+        return null;
+      }
+      errors.errors.add(InternalError(err.message));
+      return null;
     }
   }
 }

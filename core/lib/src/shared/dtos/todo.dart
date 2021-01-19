@@ -5,16 +5,19 @@ import '../dto.dart';
 
 class TodoDto implements Dto {
   String id;
+  String userId;
   String name;
   List<dynamic> items;
   Errors errors;
 
-  TodoDto([this.id, this.name, this.items]) {
+  TodoDto([this.id, this.name, this.userId, this.items]) {
     this.errors = Errors();
   }
 
   bool isValid() {
-    return Validator.isRequired(name, 'name', errors);
+    var name = Validator.isRequired(this.name, 'name', errors);
+    var userId = Validator.isRequired(this.userId, 'userId', errors);
+    return name && userId;
   }
 
   Map<String, dynamic> toMap() {
