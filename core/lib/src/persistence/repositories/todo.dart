@@ -19,7 +19,7 @@ class TodoRepository implements ITodoRepository {
               .get())
           .map;
 
-      var todos = new List.from(user['todos']);
+      var todos = List.from(user['todos']);
       todos.add(entity.toMap());
 
       await connection.firestore

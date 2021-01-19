@@ -12,12 +12,11 @@ class User {
   User(this.id, this.name, this.username, this.password);
 
   static User create(String name, String username, String password) {
-    return new User(
-        Uuid().v4(), name, username, Password.hash(password, PBKDF2()));
+    return User(Uuid().v4(), name, username, Password.hash(password, PBKDF2()));
   }
 
   UserDto toDto() {
-    var data = new UserDto(this.id, this.name, this.username, this.password);
+    var data = UserDto(this.id, this.name, this.username, this.password);
     return data;
   }
 }

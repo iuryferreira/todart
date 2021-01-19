@@ -20,6 +20,6 @@ class Application {
 
   routes() {
     routesTodo(this.app);
-    this.app.fallback((req, res) => throw new AngelHttpException.notFound());
+    this.app.fallback((req, res) => throw AngelHttpException.notFound());
   }
 }

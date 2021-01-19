@@ -7,7 +7,7 @@ class UserController {
   UserController(this.service);
 
   store(RequestContext request, ResponseContext response) async {
-    var data = new UserDto();
+    var data = UserDto();
     data.name = request.bodyAsMap['name'];
     data.username = request.bodyAsMap['username'];
     data.password = request.bodyAsMap['password'];

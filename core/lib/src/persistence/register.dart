@@ -8,7 +8,7 @@ import 'repositories/user.dart';
 import 'database.dart';
 
 void registerPersistence(Ioco container) {
-  container.singleton(new Database(), as: IDatabase);
+  container.singleton(Database(), as: IDatabase);
   container.bind(ITodoRepository, TodoRepository);
   container.bind(IUserRepository, UserRepository);
 }

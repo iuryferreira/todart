@@ -12,6 +12,6 @@ class Task {
   }
 
   static Task create(String message) {
-    return new Task(message, Uuid().v4(), false);
+    return Task(message, Uuid().v4(), false);
   }
 }

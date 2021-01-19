@@ -10,11 +10,11 @@ class Todo {
   Todo(this.name, this.id, this.userId);
 
   static Todo create(String name, String userId) {
-    return new Todo(name, Uuid().v4(), userId);
+    return Todo(name, Uuid().v4(), userId);
   }
 
   TodoDto toDto() {
-    var data = new TodoDto(this.id, this.name, this.userId);
+    var data = TodoDto(this.id, this.name, this.userId);
     return data;
   }
 }

@@ -4,7 +4,7 @@ import 'src/application/register.dart';
 import 'src/persistence/register.dart';
 import 'src/domain/register.dart';
 
-final container = new Ioco();
+final container = Ioco();
 
 setupContainer() {
   registerPersistence(container);
