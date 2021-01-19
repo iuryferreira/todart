@@ -6,6 +6,7 @@ class TaskDto implements Dto {
   String id;
   String message;
   String todoId;
+  String userId;
   bool status;
 
   Errors errors;

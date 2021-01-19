@@ -3,6 +3,7 @@ import 'package:todart_core/core.dart';
 
 import 'controllers/user_controller.dart';
 import 'controllers/todo_controller.dart';
+import 'controllers/task_controller.dart';
 import 'middlewares/deserialize.dart';
 
 routesTodo(Angel app) {
@@ -15,5 +16,10 @@ routesTodo(Angel app) {
       '/users',
       (request, response) async =>
           await container.make(UserController).store(request, response),
+      middleware: [deserialize]);
+  app.post(
+      '/tasks',
+      (request, response) async =>
+          await container.make(TaskController).store(request, response),
       middleware: [deserialize]);
 }

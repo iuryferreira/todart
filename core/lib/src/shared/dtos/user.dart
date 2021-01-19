@@ -1,6 +1,5 @@
-import 'package:todart_core/src/shared/errors.dart';
-
 import '../validator.dart';
+import '../errors.dart';
 import '../dto.dart';
 
 class UserDto implements Dto {

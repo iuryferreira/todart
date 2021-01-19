@@ -1,6 +1,5 @@
-import 'package:todart_core/src/shared/errors.dart';
-
 import '../validator.dart';
+import '../errors.dart';
 import '../dto.dart';
 
 class TodoDto implements Dto {
@@ -13,6 +12,11 @@ class TodoDto implements Dto {
   TodoDto([this.id, this.name, this.userId, this.items]) {
     this.errors = Errors();
   }
+
+  TodoDto.fromMap(Map<String, dynamic> map)
+      : id = map['id'],
+        name = map['name'],
+        items = List.from(map['items']);
 
   bool isValid() {
     var name = Validator.isRequired(this.name, 'name', errors);

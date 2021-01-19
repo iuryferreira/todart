@@ -10,7 +10,7 @@ class Task {
   Task(this.id, this.message, this.status, this.todoId);
 
   static Task create(String message, String todoId) {
-    return Task(message, Uuid().v4(), false, todoId);
+    return Task(Uuid().v4(), message, false, todoId);
   }
 
   TaskDto toDto() {
