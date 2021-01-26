@@ -12,6 +12,15 @@ class InternalError implements CustomError {
   Map<String, dynamic> toJson() => {'name': name, 'message': message};
 }
 
+class AuthenticationError implements CustomError {
+  String name;
+  String message;
+
+  AuthenticationError(this.message, {this.name = 'Authentication Error'});
+
+  Map<String, dynamic> toJson() => {'name': name, 'message': message};
+}
+
 class ValidationError implements CustomError {
   String message;
   String field;
