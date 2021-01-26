@@ -1,5 +1,5 @@
 import 'package:uuid/uuid.dart';
-import 'package:password/password.dart';
+import 'package:hashio/hashio.dart';
 
 import '../../shared/dtos/user.dart';
 
@@ -12,7 +12,7 @@ class User {
   User(this.id, this.name, this.username, this.password);
 
   static User create(String name, String username, String password) {
-    return User(Uuid().v4(), name, username, Password.hash(password, PBKDF2()));
+    return User(Uuid().v4(), name, username, Hashio.hash(password, PBKDF2()));
   }
 
   UserDto toDto() {
