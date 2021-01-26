@@ -13,7 +13,7 @@ class TaskUseCase implements ITaskUseCase {
   Future<TaskDto> add(TaskDto data) async {
     var task = data;
     if (task.isValid()) {
-      var userData = await userRepository.find(task.userId);
+      var userData = await userRepository.find(id: task.userId);
       if (userData != null) {
         var todo = await todorepository.find(task.todoId, task.userId);
         todo.userId = task.userId;

@@ -13,7 +13,7 @@ class TodoUseCase implements ITodoUseCase {
   add(TodoDto data) async {
     var todo = data;
     if (todo.isValid()) {
-      var userData = await userRepository.find(todo.userId);
+      var userData = await userRepository.find(id: todo.userId);
       if (userData != null) {
         var entity = Todo.create(todo.name, userData.id);
         todo = entity.toDto();

@@ -1,3 +1,5 @@
+import 'package:firedart/firedart.dart';
+
 import '../../../core.dart';
 import '../../shared/database.dart';
 import '../../shared/repositories/user.dart';
@@ -43,13 +45,19 @@ class UserRepository implements IUserRepository {
     }
   }
 
-  find(id) async {
+  find({id, username}) async {
     try {
-      var result = (await connection.firestore
-              .collection('users')
-              .where('id', isEqualTo: id)
-              .get())
-          .first;
+      QueryReference query = null;
+      if (username != null) {
+        query = connection.firestore
+            .collection('users')
+            .where('username', isEqualTo: username);
+      } else {
+        query =
+            connection.firestore.collection('users').where('id', isEqualTo: id);
+      }
+
+      var result = (await query.get()).first;
 
       var user = UserDto.fromMap(result.map);
       return user;
